@@ -1,0 +1,6 @@
+{
+  "name": "Akatsuki First Aid",
+  "description": "Quick, emergency first aid guidance with interactive body map, 35+ step-by-step guides, and instant emergency call access.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

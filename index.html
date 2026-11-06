@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akatsuki First Aid – Simple Emergency Help in Seconds</title>
+<meta name="description" content="Quick, emergency first aid guidance with interactive body map, 35+ step-by-step guides, audio CPR metronome, and instant emergency call access." />
+<meta property="og:title" content="Akatsuki First Aid – Simple Emergency Help in Seconds" />
+<meta property="og:description" content="Quick, emergency first aid guidance with interactive body map, 35+ step-by-step guides, audio CPR metronome, and instant emergency call access." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ RESET & DESIGN SYSTEM ============ */
+:root {
+  --bg: #040914;
+  --bg2: #081326;
+  --card: rgba(11, 25, 48, 0.72);
+  --card2: rgba(18, 38, 72, 0.65);
+  --glass: rgba(11, 27, 51, 0.68);
+  --line: rgba(59, 95, 153, 0.22);
+  --line2: rgba(59, 95, 153, 0.45);
+  --text: #F8FAFC;
+  --soft: #CBD5E1;
+  --muted: #8499B8;
+  --red: #E11D2E;
+  --red-hover: #F4283A;
+  --red-glow: rgba(225, 29, 46, 0.35);
+  --red-soft: rgba(225, 29, 46, 0.12);
+  --green: #10B981;
+  --amber: #F59E0B;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 14px 45px rgba(0, 0, 0, 0.55);
+  --glow: 0 0 45px rgba(225, 29, 46, 0.22);
+  --r-grad: linear-gradient(135deg, #E11D2E 0%, #FF4D5E 100%);
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(1300px 700px at 15% -10%, rgba(225, 29, 46, 0.14), transparent 60%),
+    radial-gradient(1000px 600px at 100% 20%, rgba(37, 99, 235, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 50% 90%, rgba(225, 29, 46, 0.08), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .brand-text b {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection { background: var(--red); color: #fff; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
+
+/* Ambient High-Tech Grid */
+.grid-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.35;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 25%, transparent 85%);
+}
+
+/* ============ HEADER (Strict 3-Zone Contract) ============ */
+header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  background: rgba(4, 9, 20, 0.85);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  max-width: 1280px; margin: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  padding: 14px 24px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; text-decoration: none;
+  white-space: nowrap; flex-shrink: 0;
+}
+.brand-logo svg {
+  width: 40px; height: 40px; display: block;
+  filter: drop-shadow(0 0 10px rgba(225, 29, 46, 0.5));
+  transition: transform 0.25s ease;
+}
+.brand:hover .brand-logo svg { transform: rotate(15deg) scale(1.05); }
+.brand-text b {
+  font-size: 16px; font-weight: 800; letter-spacing: 1px; color: #fff;
+  display: block; line-height: 1.2;
+}
+.nav {
+  display: flex; align-items: center; gap: 24px;
+}
+.nav a {
+  color: var(--soft); text-decoration: none; font-size: 14px; font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+  position: relative; transition: color 0.2s ease;
+}
+.nav a:hover { color: #fff; }
+.nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px;
+  background: var(--red); transition: width 0.2s ease;
+}
+.nav a:hover::after { width: 100%; }
+
+.header-action { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.sos-btn {
+  background: var(--r-grad); color: #fff; text-decoration: none; font-weight: 700;
+  padding: 10px 20px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px; font-size: 14px; letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(225, 29, 46, 0.35); transition: var(--transition);
+}
+.sos-btn:hover {
+  transform: translateY(-2px); box-shadow: 0 8px 25px rgba(225, 29, 46, 0.55);
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+  position: relative; z-index: 1; padding: 50px 20px 26px; text-align: center;
+  max-width: 1200px; margin: auto;
+}
+.hero-logo { display: flex; justify-content: center; margin-bottom: 24px; }
+.hero-logo-card {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 36px;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(225, 29, 46, 0.14);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hero-logo-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(225, 29, 46, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 45px rgba(225, 29, 46, 0.25);
+}
+.brand-lockup {
+  display: flex; align-items: center; gap: 24px;
+}
+.brand-hexagon-mark {
+  width: 76px; height: 76px; flex-shrink: 0;
+  filter: drop-shadow(0 0 12px rgba(225, 29, 46, 0.45));
+}
+.brand-divider {
+  width: 2.5px; height: 64px; background: rgba(255, 255, 255, 0.85);
+  border-radius: 2px; flex-shrink: 0;
+}
+.brand-title-wrap { text-align: left; }
+.brand-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(24px, 4.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  line-height: 1.05;
+}
+.brand-tagline {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(10.5px, 1.8vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: #94A3B8;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .hero-logo-card { padding: 12px 20px; }
+  .brand-lockup { gap: 14px; }
+  .brand-hexagon-mark { width: 52px; height: 52px; }
+  .brand-divider { height: 46px; width: 2px; }
+  .brand-name { font-size: 22px; }
+  .brand-tagline { font-size: 9.5px; letter-spacing: 0.16em; }
+}
+.hero h2 {
+  font-size: clamp(30px, 5.5vw, 54px); font-weight: 900; letter-spacing: -1px;
+  margin: 18px 0 10px; line-height: 1.15; text-wrap: balance;
+}
+.hero h2 span {
+  background: linear-gradient(135deg, #FF4D5E, #E11D2E);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero .sub {
+  color: var(--soft); font-size: clamp(15px, 1.8vw, 17px); max-width: 640px; margin: auto;
+  text-wrap: balance;
+}
+
+/* Hero Key Indicators (Clean Typography, No Pill Clutter) */
+.hero-stats {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;
+}
+.hero-stats .stat {
+  background: var(--glass); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px;
+  padding: 12px 20px; min-width: 140px; transition: var(--transition);
+}
+.hero-stats .stat:hover { transform: translateY(-3px); border-color: rgba(225, 29, 46, 0.4); }
+.hero-stats .stat b {
+  font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--red);
+  font-weight: 700; display: block; line-height: 1.2;
+}
+.hero-stats .stat small {
+  color: var(--muted); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+}
+
+/* ============ 35-SEC EMERGENCY VIDEO SECTION ============ */
+.video-section {
+  max-width: 1280px; margin: 32px auto 0; padding: 0 20px; position: relative; z-index: 1;
+}
+.video-container {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(225, 29, 46, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.video-header {
+  margin-bottom: 20px; text-align: left;
+}
+.video-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #FFA4AD;
+  background: rgba(225, 29, 46, 0.15);
+  border: 1px solid rgba(225, 29, 46, 0.35);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.video-header h3 {
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+.video-header p {
+  color: var(--soft);
+  font-size: 14px;
+  max-width: 680px;
+}
+.video-player-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #020610;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.video-player-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-watermark-overlay {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  pointer-events: none;
+  z-index: 5;
+  background: rgba(4, 9, 20, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.watermark-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.watermark-logo span {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+.video-timestamps {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.video-timestamps button {
+  background: var(--card2);
+  border: 1px solid var(--line);
+  color: var(--soft);
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+.video-timestamps button:hover {
+  background: rgba(225, 29, 46, 0.18);
+  border-color: var(--red);
+  color: #FFFFFF;
+}
+.video-timestamps button b {
+  color: #FF8B95;
+  font-family: 'JetBrains Mono', monospace;
+  margin-right: 4px;
+}
+@media (max-width: 640px) {
+  .video-container { padding: 18px; }
+  .video-timestamps { gap: 6px; }
+  .video-timestamps button { padding: 6px 10px; font-size: 11px; }
+}
+
+/* ============ EMERGENCY CPR BANNER ============ */
+.emergency-banner {
+  max-width: 1280px; margin: 12px auto 0; padding: 0 20px; position: relative; z-index: 1;
+}
+.emergency-banner > div {
+  background: linear-gradient(135deg, rgba(46, 10, 16, 0.95), rgba(20, 6, 10, 0.95));
+  border: 1px solid rgba(225, 29, 46, 0.4); border-radius: 16px;
+  padding: 16px 22px; display: flex; flex-wrap: wrap; gap: 14px;
+  align-items: center; justify-content: space-between;
+  box-shadow: 0 8px 32px rgba(225, 29, 46, 0.18);
+  backdrop-filter: blur(12px);
+}
+.emergency-banner .msg {
+  display: flex; align-items: center; gap: 16px; flex: 1; min-width: 260px;
+}
+.emergency-banner .msg-icon {
+  width: 44px; height: 44px; background: var(--r-grad); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  flex-shrink: 0; box-shadow: 0 4px 14px rgba(225, 29, 46, 0.4);
+}
+.emergency-banner .msg b {
+  font-size: 15px; color: #fff; display: block; font-weight: 700;
+}
+.emergency-banner .msg span {
+  color: #FECDD3; font-size: 13px;
+}
+.banner-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.emergency-banner .sos {
+  background: var(--r-grad); color: #fff; border: 0; border-radius: 999px;
+  padding: 11px 22px; font-weight: 700; cursor: pointer; font-size: 14px;
+  display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
+  text-decoration: none; box-shadow: 0 4px 16px rgba(225, 29, 46, 0.4);
+}
+.emergency-banner .sos:hover {
+  transform: translateY(-2px); box-shadow: 0 6px 22px rgba(225, 29, 46, 0.6);
+}
+.cpr-tool-btn {
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition);
+}
+.cpr-tool-btn:hover { background: rgba(255, 255, 255, 0.18); border-color: #fff; }
+
+/* ============ INTERACTIVE CPR METRONOME WIDGET ============ */
+.cpr-metronome-card {
+  max-width: 1280px; margin: 16px auto 0; padding: 0 20px; display: none; position: relative; z-index: 10;
+}
+.cpr-metronome-card.active { display: block; animation: fadeIn 0.3s ease; }
+.cpr-metronome-inner {
+  background: var(--card2); border: 1px solid rgba(225, 29, 46, 0.4); border-radius: 18px;
+  padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px; box-shadow: var(--shadow-lg), var(--glow);
+}
+.cpr-visual-pulse {
+  display: flex; align-items: center; gap: 18px;
+}
+.cpr-pulse-circle {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--r-grad);
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+  box-shadow: 0 0 0 0 rgba(225, 29, 46, 0.7);
+  transition: transform 0.08s ease;
+}
+.cpr-pulse-circle.beat {
+  transform: scale(1.22);
+  box-shadow: 0 0 24px 6px rgba(255, 77, 94, 0.85);
+}
+.cpr-text-meta h4 { font-size: 17px; font-weight: 800; color: #fff; }
+.cpr-text-meta p { font-size: 13px; color: var(--soft); }
+.cpr-controls { display: flex; align-items: center; gap: 12px; }
+.cpr-toggle-btn {
+  background: var(--r-grad); border: 0; color: #fff; font-weight: 700;
+  padding: 10px 20px; border-radius: 999px; cursor: pointer; font-size: 13px;
+  transition: var(--transition);
+}
+.cpr-toggle-btn:hover { transform: scale(1.03); }
+.cpr-close-btn {
+  background: transparent; border: 1px solid var(--line2); color: var(--soft);
+  width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: var(--transition);
+}
+.cpr-close-btn:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+
+/* ============ MAIN LAYOUT ============ */
+.app-wrap {
+  position: relative; z-index: 1; max-width: 1280px; margin: auto;
+  padding: 24px 20px; display: grid; grid-template-columns: 330px 1fr; gap: 28px;
+}
+@media (max-width: 960px) { .app-wrap { grid-template-columns: 1fr; } }
+
+/* ============ BODY MAP PANEL ============ */
+.map-panel {
+  background: radial-gradient(circle at 50% 35%, rgba(225, 29, 46, 0.12), transparent 65%), var(--glass);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
+  padding: 22px; text-align: center; align-self: start;
+  position: sticky; top: 86px; box-shadow: var(--shadow-lg);
+}
+.map-panel-header { margin-bottom: 14px; text-align: left; }
+.map-panel-header h3 { font-size: 17px; font-weight: 800; color: #fff; }
+.map-panel-header .hint { color: var(--muted); font-size: 13px; }
+
+/* Body SVG Container */
+.body-svg {
+  width: 100%; max-width: 220px; display: block; margin: 8px auto;
+  filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.25));
+}
+.body-svg .part {
+  fill: #102347; stroke: #2D4C82; stroke-width: 1.8;
+  cursor: pointer;
+  transition: fill 0.18s ease, stroke 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+  transform-origin: center; transform-box: fill-box;
+}
+.body-svg .part:hover {
+  fill: #5A1622; stroke: #FF4D5E; transform: scale(1.06);
+  filter: drop-shadow(0 0 8px rgba(225, 29, 46, 0.7));
+}
+.body-svg .part.on {
+  fill: var(--red); stroke: #FFF;
+  filter: drop-shadow(0 0 12px rgba(225, 29, 46, 0.85));
+}
+.body-svg .marker-pin {
+  fill: #fff; pointer-events: none; opacity: 0.75;
+}
+
+/* Filter Chips (Segmented Tab Style) */
+.chips {
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 18px;
+}
+.chip {
+  background: var(--card2); color: var(--soft); border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px 14px; font-size: 12px; cursor: pointer;
+  transition: var(--transition); font-weight: 500; font-family: inherit;
+}
+.chip:hover { border-color: rgba(225, 29, 46, 0.5); color: #fff; }
+.chip.on {
+  background: var(--r-grad); color: #fff; border-color: transparent;
+  box-shadow: 0 2px 12px rgba(225, 29, 46, 0.4); font-weight: 700;
+}
+
+/* ============ SEARCH & FILTER CONTROLS ============ */
+.search-container {
+  display: flex; gap: 10px; align-items: center; position: relative;
+}
+.search-box {
+  position: relative; flex: 1;
+}
+.search-box input {
+  width: 100%; padding: 14px 20px 14px 48px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass); backdrop-filter: blur(10px);
+  color: #fff; font-size: 15px; font-family: inherit;
+  transition: var(--transition);
+}
+.search-box input:focus {
+  outline: none; border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(225, 29, 46, 0.22);
+}
+.search-box .search-icon {
+  position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-size: 16px; pointer-events: none;
+}
+.clear-search-btn {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  background: transparent; border: 0; color: var(--muted); cursor: pointer;
+  font-size: 14px; padding: 4px; display: none;
+}
+.clear-search-btn:hover { color: #fff; }
+
+/* Quick Category Bar */
+.category-pills {
+  display: flex; gap: 8px; overflow-x: auto; padding: 12px 2px 4px;
+  scrollbar-width: none;
+}
+.category-pills::-webkit-scrollbar { display: none; }
+.cat-btn {
+  background: var(--glass); border: 1px solid var(--line); border-radius: 999px;
+  color: var(--soft); font-size: 12px; font-weight: 600; padding: 7px 15px;
+  white-space: nowrap; cursor: pointer; transition: var(--transition);
+}
+.cat-btn:hover { color: #fff; border-color: var(--line2); }
+.cat-btn.active {
+  background: rgba(225, 29, 46, 0.15); border-color: var(--red); color: #fff;
+}
+
+/* Results Count & Filter Tag (Zero-Pill Static Typography) */
+.count-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 14px 0 16px; flex-wrap: wrap; gap: 8px;
+}
+.count {
+  color: var(--muted); font-size: 13px;
+}
+.count b { color: #fff; font-weight: 600; }
+.filter-tag {
+  background: rgba(225, 29, 46, 0.15); color: #fff; border: 1px solid rgba(225, 29, 46, 0.35);
+  border-radius: 999px; padding: 4px 12px; font-size: 12px;
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
+}
+.filter-tag button {
+  background: none; border: 0; color: #FF4D5E; cursor: pointer;
+  font-size: 13px; font-weight: 800; line-height: 1; padding: 0 2px;
+}
+
+/* ============ DETAILS CARDS ============ */
+.card {
+  background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 18px;
+  margin-bottom: 14px; overflow: hidden; position: relative;
+  transition: var(--transition);
+}
+.card:hover {
+  border-color: rgba(225, 29, 46, 0.35); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+.card[open] {
+  border-color: rgba(225, 29, 46, 0.45); box-shadow: var(--glow);
+}
+
+.card summary {
+  padding: 18px 22px; font-weight: 700; font-size: 15px; cursor: pointer;
+  display: flex; justify-content: space-between; gap: 14px; align-items: center;
+  list-style: none; user-select: none;
+}
+.card summary::-webkit-details-marker { display: none; }
+.card summary::after {
+  content: ""; width: 8px; height: 8px; border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted); transform: rotate(-45deg);
+  transition: transform 0.25s ease; flex-shrink: 0; margin-right: 4px;
+}
+.card[open] summary::after {
+  transform: rotate(45deg); border-color: var(--red);
+}
+
+.card-title-group { flex: 1; min-width: 0; }
+.card-name { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+.part-tags {
+  display: flex; gap: 6px; font-size: 11px; color: var(--muted);
+}
+.part-tags span {
+  display: inline-flex; align-items: center;
+}
+.part-tags span:not(:last-child)::after {
+  content: "·"; margin-left: 6px; color: var(--line2);
+}
+
+/* Urgent Call Badge */
+.urgent-badge {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px;
+  background: var(--r-grad); color: #fff; padding: 4px 10px; border-radius: 999px;
+  white-space: nowrap; letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(225, 29, 46, 0.4);
+}
+
+/* Card Body Content */
+.card-body {
+  padding: 0 22px 22px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.card-toolbar {
+  display: flex; justify-content: flex-end; gap: 8px; margin: 12px 0 8px;
+}
+.speak-btn {
+  background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line);
+  color: var(--soft); font-size: 12px; font-weight: 600; padding: 6px 12px;
+  border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  transition: var(--transition);
+}
+.speak-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.speak-btn.speaking { background: var(--r-grad); color: #fff; border-color: transparent; }
+
+/* Call Box */
+.call-box {
+  background: rgba(225, 29, 46, 0.09); border: 1px solid rgba(225, 29, 46, 0.25);
+  padding: 14px 18px; border-radius: 12px; margin-top: 10px; margin-bottom: 16px;
+}
+.call-box b {
+  color: #FFA4AD; font-size: 13px; display: block; margin-bottom: 2px;
+}
+.call-box span {
+  color: var(--soft); font-size: 14px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--muted); font-weight: 700; margin: 16px 0 8px;
+}
+
+/* Numbered Step Bubbles */
+.steps ol { list-style: none; counter-reset: st; padding: 0; }
+.steps li {
+  counter-increment: st; position: relative; padding: 6px 0 6px 42px; margin: 6px 0;
+  color: var(--soft); font-size: 14px; line-height: 1.5;
+}
+.steps li::before {
+  content: counter(st); position: absolute; left: 0; top: 4px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--r-grad); color: #fff; font-weight: 800; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(225, 29, 46, 0.4);
+}
+
+/* Do Not Box */
+.dont-box {
+  border: 1px solid rgba(255, 77, 94, 0.2); background: rgba(255, 77, 94, 0.04);
+  border-radius: 12px; padding: 14px 18px; margin-top: 6px;
+}
+.dont-box h4 {
+  margin: 0 0 6px; color: #FFA4AD; font-size: 13px; font-weight: 700;
+}
+.dont-box ul { list-style: none; padding: 0; }
+.dont-box li {
+  margin: 6px 0; color: var(--soft); font-size: 14px; display: flex; align-items: flex-start; gap: 8px;
+}
+.dont-box li::before {
+  content: "✕"; color: #FF4D5E; font-weight: 800; font-size: 13px; line-height: 1.5;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center; padding: 70px 20px; color: var(--muted);
+  background: var(--glass); border: 1px dashed var(--line2); border-radius: 20px;
+}
+.empty-state .icon { font-size: 42px; margin-bottom: 12px; }
+.empty-state p { font-size: 15px; color: var(--soft); }
+
+/* ============ FLOATING CALL BUTTON (PHONES) ============ */
+.sos-float { display: none; }
+@media (max-width: 880px) {
+  .sos-float {
+    display: flex; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60;
+    justify-content: center; align-items: center; gap: 10px;
+    padding: 16px; border-radius: 999px; background: var(--r-grad);
+    color: #fff; font-weight: 900; text-decoration: none; letter-spacing: 1px;
+    box-shadow: 0 10px 35px rgba(225, 29, 46, 0.6);
+    font-size: 15px;
+  }
+  body { padding-bottom: 92px; }
+}
+
+/* ============ GEOLOCATION MODAL (ASSIST 1122 DISPATCH) ============ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 100; background: rgba(2, 6, 15, 0.82);
+  backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+.modal-box {
+  background: #09172E; border: 1px solid rgba(225, 29, 46, 0.4);
+  border-radius: 24px; padding: 28px; max-width: 480px; width: 100%;
+  box-shadow: var(--shadow-lg), var(--glow); position: relative;
+}
+.modal-close {
+  position: absolute; right: 20px; top: 20px; background: transparent; border: 0;
+  color: var(--muted); font-size: 20px; cursor: pointer;
+}
+.modal-close:hover { color: #fff; }
+.modal-header h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.modal-header p { font-size: 13px; color: var(--soft); margin-bottom: 18px; }
+.gps-readout {
+  background: rgba(0, 0, 0, 0.35); border: 1px solid var(--line2); border-radius: 12px;
+  padding: 14px 18px; font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  margin-bottom: 18px; color: #F1F5F9;
+}
+.modal-btn-row { display: flex; gap: 10px; }
+.modal-btn-row a, .modal-btn-row button {
+  flex: 1; padding: 12px; border-radius: 999px; text-align: center; text-decoration: none;
+  font-weight: 700; font-size: 14px; cursor: pointer; transition: var(--transition);
+}
+.call-confirm-btn { background: var(--r-grad); color: #fff; border: 0; }
+.call-cancel-btn { background: rgba(255, 255, 255, 0.08); color: var(--soft); border: 1px solid var(--line); }
+
+/* ============ FOOTER ============ */
+footer {
+  position: relative; z-index: 1; max-width: 1280px; margin: 60px auto 0;
+  padding: 36px 20px; border-top: 1px solid var(--line); color: var(--muted);
+  font-size: 13px; text-align: center;
+}
+.foot-brand {
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px;
+}
+.foot-brand svg { width: 32px; height: 32px; }
+.foot-brand b { font-size: 15px; letter-spacing: 1px; color: #fff; }
+footer p { margin: 4px 0; }
+footer .links {
+  margin-top: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+}
+footer .links a {
+  color: var(--soft); text-decoration: none; transition: color 0.2s ease;
+}
+footer .links a:hover { color: var(--red); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <!-- Zone 1: Brand Wordmark (Strict Top Bar Contract) -->
+    <a href="#top" class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="none" stroke="#fff" stroke-width="9"/>
+          <ellipse cx="50" cy="50" rx="34" ry="15" fill="none" stroke="#fff" stroke-width="5" transform="rotate(-30 50 50)"/>
+          <circle cx="50" cy="50" r="9" fill="#E11D2E"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <b>AKATSUKI FIRST AID</b>
+      </div>
+    </a>
+
+    <!-- Zone 2: Navigation Links (Clean text, single line) -->
+    <nav class="nav">
+      <a href="#top">Home</a>
+      <a href="#video-section">35s Video</a>
+      <a href="#guides">Guides</a>
+      <a href="#cpr-section" onclick="openCprMetronome()">CPR Beat</a>
+      <a href="#location" onclick="openLocationModal()">Emergency Dispatch</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <!-- Zone 3: Primary Action CTA -->
+    <div class="header-action">
+      <a href="tel:1122" class="sos-btn" onclick="openLocationModal(); return false;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        CALL 1122
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-logo">
+    <div class="hero-logo-card">
+      <div class="brand-lockup">
+        <svg class="brand-hexagon-mark" viewBox="0 0 100 100" role="img" aria-label="Akatsuki Corp emblem">
+          <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="none" stroke="#FFFFFF" stroke-width="8.5" stroke-linejoin="round"/>
+          <ellipse cx="50" cy="50" rx="35" ry="14" fill="none" stroke="#FFFFFF" stroke-width="4.8" transform="rotate(-28 50 50)"/>
+          <circle cx="50" cy="50" r="10" fill="#E11D2E"/>
+        </svg>
+        <div class="brand-divider"></div>
+        <div class="brand-title-wrap">
+          <div class="brand-name">AKATSUKI CORP</div>
+          <div class="brand-tagline">YOU HEALTH OUR WAYS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>First Aid Help in <span>2 Taps</span></h2>
+  <p class="sub">Select an injury zone on the interactive anatomical map or search for immediate clinical step-by-step emergency guidance.</p>
+  
+  <div class="hero-stats">
+    <div class="stat"><b>35s</b><small>Quick Video</small></div>
+    <div class="stat"><b>35+</b><small>Protocols</small></div>
+    <div class="stat"><b>10</b><small>Body Zones</small></div>
+    <div class="stat"><b>110</b><small>CPR BPM Beat</small></div>
+    <div class="stat"><b>24/7</b><small>Always Ready</small></div>
+  </div>
+</section>
+
+<!-- ============ COMPREHENSIVE EMERGENCY TRAINING VIDEO ============ -->
+<section class="video-section" id="video-section">
+  <div class="video-container">
+    <div class="video-header">
+      <div class="video-badge">FULL 40-SECOND CLINICAL GUIDE · WITH SOUNDTRACK</div>
+      <h3>Akatsuki Official First Aid Training Protocol</h3>
+      <p>A comprehensive audiovisual first aid training video with musical soundtrack covering the DRSABCD primary survey, 110 BPM CPR compressions, Heimlich choking relief, severe hemorrhage control, and thermal burn care.</p>
+    </div>
+    <div class="video-player-wrap">
+      <video id="trainingVideo" controls playsinline preload="metadata">
+        <source src="akatsuki_first_aid_guide.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="video-watermark-overlay" aria-hidden="true">
+        <div class="watermark-logo">
+          <svg viewBox="0 0 100 100" style="width:20px;height:20px">
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="none" stroke="#FFFFFF" stroke-width="8.5"/>
+            <ellipse cx="50" cy="50" rx="35" ry="14" fill="none" stroke="#FFFFFF" stroke-width="4.8" transform="rotate(-28 50 50)"/>
+            <circle cx="50" cy="50" r="10" fill="#E11D2E"/>
+          </svg>
+          <span>AKATSUKI CORP</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="video-meta-bar" style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--soft)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="color:#FFA4AD">🎵 Soundtrack:</span>
+        <span>Cinematic Ambient Synth Chords + 110 BPM CPR Pulse Rhythm</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:12px;color:var(--muted)">Speed:</span>
+        <button class="chip on" style="padding:3px 10px;font-size:11px" onclick="setSpeed(0.75)">0.75x</button>
+        <button class="chip on" style="padding:3px 10px;font-size:11px" onclick="setSpeed(1.0)">1.0x</button>
+        <button class="chip on" style="padding:3px 10px;font-size:11px" onclick="setSpeed(1.25)">1.25x</button>
+      </div>
+    </div>
+
+    <div class="video-timestamps">
+      <button onclick="seekVideo(0)"><b>0:00</b> Protocol Intro</button>
+      <button onclick="seekVideo(5)"><b>0:05</b> DRSABCD Survey</button>
+      <button onclick="seekVideo(11)"><b>0:11</b> Adult &amp; Child CPR</button>
+      <button onclick="seekVideo(18)"><b>0:18</b> Choking &amp; Heimlich</button>
+      <button onclick="seekVideo(24)"><b>0:24</b> Severe Bleeding</button>
+      <button onclick="seekVideo(30)"><b>0:30</b> Burns &amp; Shock</button>
+      <button onclick="seekVideo(35)"><b>0:35</b> Recovery &amp; 1122</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMERGENCY BANNER ============ -->
+<section class="emergency-banner" id="cpr-section">
+  <div>
+    <div class="msg">
+      <div class="msg-icon">⚠️</div>
+      <div>
+        <b>Not responding or not breathing normally?</b>
+        <span>Call 1122 immediately, then begin CPR compressions at 100–120 BPM.</span>
+      </div>
+    </div>
+    <div class="banner-actions">
+      <button class="cpr-tool-btn" onclick="openCprMetronome()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+        Audio CPR Beat
+      </button>
+      <button class="sos" onclick="setQ('CPR'); document.getElementById('guides').scrollIntoView({behavior:'smooth'});">
+        Show CPR Steps
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CPR METRONOME WIDGET ============ -->
+<div class="cpr-metronome-card" id="cprCard">
+  <div class="cpr-metronome-inner">
+    <div class="cpr-visual-pulse">
+      <div class="cpr-pulse-circle" id="cprHeart">❤️</div>
+      <div class="cpr-text-meta">
+        <h4 id="cprBpmLabel">CPR Compression Guide: 110 BPM</h4>
+        <p>Push hard and fast in center of chest (5–6 cm depth). Allow chest to recoil.</p>
+      </div>
+    </div>
+    <div class="cpr-controls">
+      <button class="cpr-toggle-btn" id="cprToggleBtn" onclick="toggleCprSound()">Start Audio Beat</button>
+      <button class="cpr-close-btn" onclick="closeCprMetronome()" title="Close Metronome">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div class="app-wrap" id="guides">
+
+  <!-- BODY MAP ASIDE -->
+  <aside class="map-panel">
+    <div class="map-panel-header">
+      <h3>Interactive Body Map</h3>
+      <p class="hint">Tap an anatomical zone to filter</p>
+    </div>
+
+    <!-- Enhanced Anatomical Silhouette SVG -->
+    <svg class="body-svg" viewBox="0 0 200 400" role="img" aria-label="Human body map">
+      <!-- Outer subtle body contour guide -->
+      <path d="M 100 12 C 114 12 126 24 126 40 C 126 54 116 66 109 72 L 109 84 L 148 94 C 158 98 165 110 162 135 L 155 200 C 153 208 145 212 138 208 L 130 180 L 128 200 L 128 320 L 132 345 C 134 355 125 362 110 362 L 90 362 C 75 362 66 355 68 345 L 72 320 L 72 200 L 70 180 L 62 208 C 55 212 47 208 45 200 L 38 135 C 35 110 42 98 52 94 L 91 84 L 91 72 C 84 66 74 54 74 40 C 74 24 86 12 100 12 Z" fill="rgba(19,38,74,0.3)" stroke="rgba(59,95,153,0.3)" stroke-width="1"/>
+
+      <!-- Head & Cranium -->
+      <path class="part" data-p="head" d="M 82 40 C 82 22 118 22 118 40 C 118 56 112 66 100 68 C 88 66 82 56 82 40 Z"/>
+      <!-- Eyes & Facial Zone -->
+      <ellipse class="part" data-p="eyes" cx="92" cy="38" rx="5" ry="3"/>
+      <ellipse class="part" data-p="eyes" cx="108" cy="38" rx="5" ry="3"/>
+
+      <!-- Throat / Neck -->
+      <rect class="part" data-p="head" x="93" y="68" width="14" height="16" rx="4"/>
+
+      <!-- Chest & Heart Zone -->
+      <path class="part" data-p="chest" d="M 68 88 L 132 88 C 138 88 140 94 138 108 L 133 144 C 132 147 128 150 122 150 L 78 150 C 72 150 68 147 67 144 L 62 108 C 60 94 62 88 68 88 Z"/>
+      <!-- Heart Center Indicator -->
+      <circle cx="95" cy="115" r="4" fill="#FF4D5E" opacity="0.8"/>
+
+      <!-- Abdomen & Stomach Zone -->
+      <path class="part" data-p="abdomen" d="M 72 154 L 128 154 C 132 154 134 158 132 168 L 126 198 C 124 204 118 208 112 208 L 88 208 C 82 208 76 204 74 198 L 68 168 C 66 158 68 154 72 154 Z"/>
+
+      <!-- Left & Right Arms -->
+      <rect class="part" data-p="arm" x="42" y="94" width="20" height="88" rx="10"/>
+      <rect class="part" data-p="arm" x="138" y="94" width="20" height="88" rx="10"/>
+
+      <!-- Hands & Wrists -->
+      <circle class="part" data-p="hand" cx="52" cy="196" r="12"/>
+      <circle class="part" data-p="hand" cx="148" cy="196" r="12"/>
+
+      <!-- Legs (Thighs & Calves) -->
+      <rect class="part" data-p="leg" x="72" y="214" width="24" height="124" rx="12"/>
+      <rect class="part" data-p="leg" x="104" y="214" width="24" height="124" rx="12"/>
+
+      <!-- Feet & Ankles -->
+      <ellipse class="part" data-p="foot" cx="84" cy="348" rx="18" ry="9"/>
+      <ellipse class="part" data-p="foot" cx="116" cy="348" rx="18" ry="9"/>
+    </svg>
+
+    <!-- Filter chips -->
+    <div class="chips" id="chips"></div>
+  </aside>
+
+  <!-- LIST & SEARCH CONTENT -->
+  <section>
+    <div class="search-container">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="q" placeholder="Search bleeding, burn, choking, snake bite, CPR..." autocomplete="off">
+        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+
+    <!-- Quick Category Pill Filters -->
+    <div class="category-pills">
+      <button class="cat-btn active" onclick="setCategoryFilter('all', this)">All Protocols</button>
+      <button class="cat-btn" onclick="setCategoryFilter('critical', this)">🚨 Life-Threatening</button>
+      <button class="cat-btn" onclick="setCategoryFilter('bleeding', this)">🩸 Bleeding & Trauma</button>
+      <button class="cat-btn" onclick="setCategoryFilter('burns', this)">🔥 Burns & Heat</button>
+      <button class="cat-btn" onclick="setCategoryFilter('bites', this)">🐍 Bites & Stings</button>
+      <button class="cat-btn" onclick="setCategoryFilter('breathing', this)">🫁 Respiration & Choking</button>
+    </div>
+
+    <div class="count-row">
+      <p class="count" id="count"></p>
+      <div id="filterTag"></div>
+    </div>
+
+    <div id="list"></div>
+  </section>
+
+</div>
+
+<!-- ============ EMERGENCY GEOLOCATION MODAL ============ -->
+<div class="modal-overlay" id="locationModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLocationModal()">✕</button>
+    <div class="modal-header">
+      <h3>Call 1122 Dispatch</h3>
+      <p>Give these accurate coordinates to the emergency responder for rapid ambulance routing.</p>
+    </div>
+    <div class="gps-readout" id="gpsDisplay">
+      Locating your GPS coordinates...
+    </div>
+    <div class="modal-btn-row">
+      <button class="call-cancel-btn" onclick="closeLocationModal()">Cancel</button>
+      <a href="tel:1122" class="call-confirm-btn" onclick="closeLocationModal()">Dial 1122 Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer id="about">
+  <div class="foot-brand">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="none" stroke="#fff" stroke-width="9"/>
+      <ellipse cx="50" cy="50" rx="34" ry="15" fill="none" stroke="#fff" stroke-width="5" transform="rotate(-30 50 50)"/>
+      <circle cx="50" cy="50" r="9" fill="#E11D2E"/>
+    </svg>
+    <b>AKATSUKI CORP</b>
+  </div>
+  <p>This application provides standard clinical first aid guidance and does not replace emergency medical services.</p>
+  <p>In life-threatening situations, dial <strong style="color:#FFA4AD;font-family:'JetBrains Mono'">1122</strong> immediately or transport to the nearest trauma emergency center.</p>
+  <div class="links">
+    <a href="tel:1122">Call 1122</a>
+    <a href="#guides">First Aid Guides</a>
+    <a href="#cpr-section" onclick="openCprMetronome()">CPR Audio Beat</a>
+    <a href="#top">Back to Top</a>
+  </div>
+  <p style="margin-top:16px;font-size:12px;color:#64748B">© 2026 Akatsuki Corp – Your Health, Our Ways. All rights reserved.</p>
+</footer>
+
+<!-- FLOATING CALL BUTTON (PHONES) -->
+<a href="tel:1122" class="sos-float">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  CALL 1122
+</a>
+
+<script>
+const LABELS = {
+  all: "All",
+  head: "Head",
+  eyes: "Eyes",
+  chest: "Chest",
+  abdomen: "Stomach",
+  arm: "Arm",
+  hand: "Hand",
+  leg: "Leg",
+  foot: "Foot",
+  skin: "Skin",
+  body: "Whole body"
+};
+
+const D = [
+{n:"CPR (Adult)",u:1,cat:"critical",p:["chest","body"],c:"Always. Call 1122 or ask someone else to call right away.",
+ s:["Check response: tap shoulders firmly and shout 'Are you okay?'","Check breathing: no breathing or only abnormal gasping means immediately begin CPR.","Position hands: place heel of one hand in the center of the chest, interlock other hand on top.","Push hard and fast: compress 5–6 cm deep at 100–120 compressions per minute.","Allow complete chest recoil between each compression without leaning on chest.","If trained, deliver 2 rescue breaths after every 30 compressions. Otherwise, perform hands-only CPR.","Continue uninterrupted until paramedic arrives, victim begins breathing, or AED is ready."],
+ d:["Do not interrupt chest compressions for more than 10 seconds.","Do not press on the stomach or the bottom tip of the breastbone."]},
+{n:"CPR (Child and Baby)",u:1,cat:"critical",p:["chest","body"],c:"Always. Call 1122 right away.",
+ s:["Check response and breathing immediately.","Child (1 year to puberty): compress with 1 or 2 hands on center of chest about 5 cm deep.","Baby (under 1 year): compress with 2 fingers in center of chest about 4 cm deep.","Deliver 30 compressions at 100–120 per minute, then 2 gentle rescue breaths covering nose and mouth.","Continue cycles of 30 pushes and 2 breaths until medical rescue takes over."],
+ d:["Do not over-inflate a child's delicate lungs.","Do not tilt an infant's head excessively backwards."]},
+{n:"Choking (Adult and Child)",u:1,cat:"breathing",p:["chest"],c:"The person cannot breathe, speak, cough, turns blue, or loses consciousness.",
+ s:["Ask 'Are you choking?' If they can cough forcefully, encourage continuous coughing.","If unable to cough, lean them forward and deliver 5 sharp back blows between shoulder blades.","Deliver 5 abdominal thrusts (Heimlich maneuver): place fist just above navel, pull sharply in and up.","Alternate 5 back blows and 5 abdominal thrusts until object clears.","If unconscious, support to floor, call 1122 immediately, and start CPR."],
+ d:["Do not administer back blows if the victim is coughing effectively.","Do not perform blind finger sweeps in mouth."]},
+{n:"Choking (Baby)",u:1,cat:"breathing",p:["chest"],c:"Baby cannot cry, cough, or breathe, or turns blue.",
+ s:["Lay baby face-down along your forearm, head positioned lower than body, firmly supporting jaw.","Deliver 5 firm back blows between shoulder blades using the heel of your hand.","Flip baby face-up and deliver 5 chest thrusts using two fingers in the center of the chest.","Repeat cycle until airway is clear. Call 1122 immediately.","If baby becomes unresponsive, initiate infant CPR."],
+ d:["Do not perform abdominal thrusts on an infant.","Do not shake or hang baby upside down."]},
+{n:"Heart Attack",u:1,cat:"critical",p:["chest"],c:"Always. Crushing chest pressure, pain radiating to arm, jaw or back, clammy sweating, shortness of breath.",
+ s:["Call 1122 immediately and request cardiac emergency response.","Seat the patient in a 'W-position' (half-sitting, knees bent) to ease heart stress.","Loosen tight neckwear and constrictive clothing.","If conscious and not allergic or contraindicated, chew 300 mg dispersible aspirin slowly.","Reassure patient; if patient loses consciousness and stops breathing, commence CPR."],
+ d:["Do not allow patient to walk, stand, or drive.","Do not offer food, water, or stimulants."]},
+{n:"Stroke",u:1,cat:"critical",p:["head"],c:"Always. FAST check: Face droop, Arm weakness, Speech difficulty, Time to call 1122.",
+ s:["Call 1122 instantly and state exact time symptoms began.","Keep patient sitting or lying with head and shoulders slightly elevated.","Calm the patient and loosen restrictive clothing.","If unconscious but breathing normally, roll into stable recovery position on paralyzed side.","Monitor vital signs constantly until paramedics arrive."],
+ d:["Do not give aspirin, medicines, food, or liquids.","Do not wait for symptoms to resolve on their own."]},
+{n:"Severe Bleeding",u:1,cat:"bleeding",p:["arm","hand","leg","foot","head","body"],c:"Arterial blood spurting or soaking through thick cloth, or bleeding uncontrolled after 10 min pressure.",
+ s:["Put on protective gloves or barrier if available.","Apply direct, firm, continuous pressure onto wound using sterile gauze or clean cloth.","If cloth saturates with blood, do not remove it; add more layers directly on top.","Elevate the injured limb above heart level if no fracture is suspected.","Secure with a tight pressure bandage once bleeding slows. Keep patient warm.","Call 1122 immediately for severe blood loss."],
+ d:["Do not remove penetrating or impaled objects from the wound.","Do not loosen dressings to inspect the wound."]},
+{n:"Amputation (Cut-off Body Part)",u:1,cat:"bleeding",p:["hand","foot","arm","leg"],c:"Always. Dial 1122 immediately.",
+ s:["Control severe stump bleeding with firm direct pressure and sterile dressings.","Keep patient lying flat and warm to counteract hypovolemic shock.","Wrap the severed body part in clean, sterile damp gauze and seal inside a watertight plastic bag.","Place that sealed bag on ice or iced water. Never put amputated tissue directly on ice.","Ensure the preserved part accompanies the patient to the hospital surgical theater."],
+ d:["Do not immerse the severed part directly in water or ice.","Do not scrub or wash amputated tissue with chemicals."]},
+{n:"Minor Cuts and Scrapes",cat:"bleeding",p:["skin","arm","hand","leg","foot"],c:"Wound gapes open, won't stop bleeding after 10 min, contains grit, or caused by rusty metal or animal bite.",
+ s:["Wash your hands thoroughly with soap.","Apply gentle direct pressure with clean pad until bleeding halts.","Flush wound under clean cool running tap water for 5 minutes.","Clean skin around wound with soap without scrubbing directly into wound bed.","Apply thin antibiotic ointment if available and cover with sterile adhesive dressing."],
+ d:["Do not apply turmeric, coffee grounds, petroleum, or home pastes.","Do not pour harsh alcohol or concentrated hydrogen peroxide directly inside fresh open tissue."]},
+{n:"Nosebleed",cat:"bleeding",p:["head"],c:"Bleeding exceeds 20 minutes, is extraordinarily heavy, follows severe head trauma, or patient feels faint.",
+ s:["Sit upright and lean head forward slightly to avoid swallowing blood.","Firmly pinch the soft fleshy lower part of the nose continuously for 10 full minutes without releasing.","Instruct patient to breathe calmly through the mouth.","Place a cold ice pack wrapped in cloth across the nasal bridge."],
+ d:["Do not tilt the head backward (prevents blood from entering airway and stomach).","Do not blow nose or pack with dry cotton wool fibers."]},
+{n:"Burns (Heat, Fire, Scald)",u:1,cat:"burns",p:["skin","arm","hand","leg","foot","chest","abdomen","head"],c:"Burn area is larger than patient's palm, on face, joints, groin, deep/charred white, or victim is an infant.",
+ s:["Immediately isolate patient from heat source.","Cool the burn immediately under clean cool running water for 20 minutes.","Remove constricting jewelry, rings, and watches before swelling begins.","Cover cooled burn loosely with clean plastic cling wrap or sterile non-adherent dressing.","Keep patient warm to prevent hypothermia; monitor for systemic shock."],
+ d:["Do not apply ice, iced water, butter, toothpaste, oil, or flour.","Do not puncture or burst intact blisters.","Do not pull away melted clothing adhered to burnt skin."]},
+{n:"Chemical Burns",u:1,cat:"burns",p:["skin","eyes","hand","arm"],c:"Always for chemical burns, corrosive agents, or any ocular chemical exposure.",
+ s:["Wear protective gloves. Brush off dry powder chemicals before applying water.","Immediately flush contaminated skin with continuous running water for at least 20 minutes.","For chemical eye splashes: hold lids wide open and continuously irrigate with saline or clean water for 20 minutes.","Remove saturated contaminated clothes while irrigating.","Collect chemical label or container safely to show toxicologists at hospital."],
+ d:["Do not attempt to neutralize acids with alkalis or vice versa.","Do not rub burning skin."]},
+{n:"Electric Shock",u:1,cat:"critical",p:["body","hand"],c:"Always. Dial 1122 even if the patient appears uninjured.",
+ s:["Do not touch patient until electrical current is fully broken.","Switch off main circuit breaker, or push wire away with dry non-conductive wood or plastic.","Assess airway, breathing, and responsiveness. Start CPR immediately if absent.","Cool entrance and exit burn wounds with running water and wrap loosely with sterile dressing.","Keep patient recumbent and warm; monitor for delayed cardiac arrhythmias."],
+ d:["Do not approach high-voltage power lines until utility crew certifies de-energization.","Do not touch live wires with damp items."]},
+{n:"Fracture (Broken Bone)",cat:"bleeding",p:["arm","hand","leg","foot","chest"],c:"Bone pierces skin (open fracture), limb looks distorted, no pulse in extremity, or spine/pelvis injury.",
+ s:["Instruct patient to remain totally motionless.","Control open bleeding by pressing sterile cloth around, but not directly on, protruding bone.","Immobilize and support the fractured limb in the exact position found using splints or rolled towels.","Apply ice pack wrapped in towel to reduce swelling.","Seek emergency medical evaluation."],
+ d:["Do not attempt to realign, straighten, or manipulate fractured bones.","Do not allow patient to eat or drink in case emergency anesthesia is required."]},
+{n:"Sprain or Strain",cat:"bleeding",p:["arm","hand","leg","foot"],c:"Cannot bear any weight on joint, rapid severe swelling, visible deformity, or localized numbness.",
+ s:["Rest the affected limb; discontinue activity immediately.","Ice: apply cold compress wrapped in towel for 15–20 minutes every 2–3 hours.","Compression: wrap with elastic bandage from distal to proximal with firm, comfortable pressure.","Elevation: elevate injured limb above heart level to decrease fluid pooling."],
+ d:["Do not apply direct heat or hot baths in the initial 48 hours.","Do not vigorously massage acutely injured ligaments."]},
+{n:"Head Injury",u:1,cat:"critical",p:["head"],c:"Loss of consciousness, repeated vomiting, seizure, cerebrospinal fluid from ears/nose, pupil asymmetry.",
+ s:["Keep patient completely still; stabilize neck and head with both hands.","Apply cold pack wrapped in cloth to bumps to mitigate swelling.","Press sterile gauze on bleeding scalp wounds (scalp bleeds heavily).","Observe patient closely for 24 hours for confusion, lethargy, or behavioral alterations."],
+ d:["Do not shake a drowsy individual.","Do not remove a motorcycle helmet unless airway is obstructed."]},
+{n:"Neck or Spine Injury",u:1,cat:"critical",p:["head","body","chest"],c:"Always. Suspect in high-speed crashes, falls from heights, diving accidents, or numbness in extremities.",
+ s:["Call 1122 immediately.","Maintain manual in-line stabilization: hold head and neck completely immobilized.","Reassure victim and instruct them to avoid even minor head rotations.","If breathing ceases, perform modified jaw-thrust CPR without tilting the cervical neck."],
+ d:["Do not move victim unless immediate life hazards (fire, explosion) threaten.","Do not twist, flex, or rotate cervical spine."]},
+{n:"Eye Injury",u:1,cat:"critical",p:["eyes"],c:"Penetrating object in eye globe, chemical exposure, sudden loss of vision, or severe eyeball pain.",
+ s:["Instruct patient never to rub or touch the eye.","Shield the eye: cover injured eye with a rigid protective shield or rigid paper cup secured with tape.","Cover both eyes gently with loose gauze pad to halt sympathetic eye movement.","Transport patient sitting upright to hospital ophthalmic emergency unit."],
+ d:["Do not pull out objects impaled in the eye.","Do not apply pressure or pressure patches onto the eyeball."]},
+{n:"Dust or Foreign Body in Eye",cat:"breathing",p:["eyes"],c:"Persistent scratchy pain, foreign body sensation continues, or vision becomes impaired.",
+ s:["Wash hands thoroughly.","Instruct patient to blink repeatedly to let tears flush the speck naturally.","Irrigate eye with clean saline or sterile water across open lids from inner to outer corner.","Gently invert upper eyelid over cotton bud if trained to expose and flush visible particles."],
+ d:["Do not rub the eyeball (causes corneal abrasions).","Do not use tweezers, pins, or sharp metal objects."]},
+{n:"Allergic Reaction & Anaphylaxis",u:1,cat:"critical",p:["body","skin"],c:"Swelling of tongue/throat, respiratory stridor, wheezing, dizziness, widespread urticaria hives.",
+ s:["Call 1122 immediately.","Administer epinephrine (EpiPen) auto-injector into mid-outer thigh without delay.","Keep patient lying flat with legs elevated. If breathing is labored, allow seated position.","If no improvement in 5–10 minutes, administer a second epinephrine dose if available.","Be prepared to initiate CPR if cardiac arrest ensues."],
+ d:["Do not permit patient to stand, walk, or exert themselves.","Do not delay epinephrine administration."]},
+{n:"Asthma Attack",u:1,cat:"breathing",p:["chest"],c:"Cannot speak full sentences, cyanotic lips, no relief after reliever inhaler, chest retraction.",
+ s:["Sit the patient upright and encourage slow, deliberate breathing.","Administer 1 puff of rapid reliever inhaler (Salbutamol/Albuterol) every 30–60 seconds, up to 10 puffs with spacer.","Loosen constrictive chest clothing and ensure good airflow.","Call 1122 immediately if symptoms persist after 10 puffs or worsen rapidly."],
+ d:["Do not lay the asthmatic patient down.","Do not leave an acutely breathless individual alone."]},
+{n:"Fainting (Syncope)",cat:"critical",p:["head","body"],c:"Patient remains unresponsive > 60 seconds, suffered head hit during fall, pregnant, or has chest pain.",
+ s:["Lay the patient flat on their back and elevate legs approximately 30 cm (12 inches).","Ensure adequate ventilation and loosen tight collar.","Check airway patency and breathing.","Once consciousness returns, let them rest quietly before slowly sitting up."],
+ d:["Do not give fluids or food while patient is semi-conscious.","Do not force patient to stand immediately."]},
+{n:"Seizure (Convulsion)",u:1,cat:"critical",p:["head","body"],c:"Seizure lasts > 5 minutes, recurrent seizures occur, patient is pregnant, injured, or slow to breathe.",
+ s:["Record start time. Clear furniture and sharp objects away.","Cushion head with folded soft clothing.","Loosen tight neckwear to preserve breathing.","When convulsions stop, roll patient into recovery position on their side to maintain open airway.","Remain beside patient offering calm reassurance until full orientation returns."],
+ d:["Do not restrain patient's limbs during seizure.","Do not insert any object, spoon, or fingers into patient's mouth."]},
+{n:"Low Blood Sugar (Hypoglycemia)",cat:"critical",p:["body"],c:"Patient is unconscious, unable to swallow, having seizures, or fails to recover after 15 min.",
+ s:["If patient is conscious and can swallow: administer 15–20g fast-acting carbohydrate (glucose tablets, fruit juice, 3 tsp sugar).","Have patient rest and re-test blood glucose after 15 minutes.","Provide complex carbohydrate snack (bread, crackers, meal) once improved.","If unconscious: roll into recovery position and call 1122."],
+ d:["Do not put drinks or food into the mouth of an unconscious person."]},
+{n:"Heat Stroke & Heat Exhaustion",u:1,cat:"burns",p:["body","head"],c:"Altered mental status, delirium, hot dry skin or profuse sweating with high core temperature. Call 1122.",
+ s:["Move patient out of sun into cool, air-conditioned or shaded room.","Remove excess outer clothing.","Aggressively cool body: immerse in cold bath or apply cold wet towels and ice packs to neck, armpits, and groin.","Fan patient continuously to maximize evaporative heat loss.","If fully alert, offer cool oral fluids in small sips."],
+ d:["Do not give fluids to a confused or semi-conscious individual.","Do not delay active cooling measures."]},
+{n:"Hypothermia (Severe Cold)",u:1,cat:"burns",p:["body"],c:"Shivering ceases, slurred speech, confusion, lethargy, or abnormally slow respiratory rate.",
+ s:["Transport victim into warm shelter.","Gently remove wet clothing and wrap tightly in dry blankets, covering head.","Provide warm, sweet non-caffeinated drinks if patient is alert.","Apply warm compresses wrapped in cloth to core torso (chest, neck, groin)."],
+ d:["Do not apply radiant intense heat or boiling water directly to skin.","Do not vigorously rub or massage extremities."]},
+{n:"Frostbite",cat:"burns",p:["hand","foot"],c:"Skin turns waxy, pale white or black, lacks sensation, or blisters appear.",
+ s:["Shelter patient in warm environment; remove wet boots and constricting rings.","Immerse frozen area in warm (37°C–40°C) water bath for 20–30 minutes until tissue softens.","Wrap thawed digits loosely with dry sterile dressings, placing sterile cotton between toes/fingers."],
+ d:["Do not rub frostbitten skin with snow or cloths.","Do not thaw tissue if there is any danger of refreezing."]},
+{n:"Poisoning (Ingested Toxins)",u:1,cat:"critical",p:["abdomen","body"],c:"Always call 1122 or national Poison Information Centre immediately.",
+ s:["Check patient responsiveness and airway.","Identify the substance, packaging label, estimated volume, and timestamp of ingestion.","Secure the original container to present to medical toxicologists.","Place unconscious breathing patient in stable recovery position."],
+ d:["Do not induce vomiting (induces esophageal caustic injury or aspiration).","Do not administer raw milk, vinegar, or charcoal unless prescribed by poison control."]},
+{n:"Carbon Monoxide Inhalation",u:1,cat:"breathing",p:["body","head"],c:"Always. Throbbing headache, nausea, cherry-red lips, confusion near generator, stove, or fire.",
+ s:["Immediately evacuate everyone into open fresh outdoor air.","Shut off gas valve or generator engine only if completely safe to do so.","Call 1122 and specify toxic gas exposure.","Administer high-flow oxygen at hospital; initiate CPR if patient is pulseless."],
+ d:["Do not re-enter gas-filled enclosed buildings.","Do not switch on light switches or create electrical sparks."]},
+{n:"Snake Bite",u:1,cat:"bites",p:["arm","hand","leg","foot"],c:"Always. Treat every snake bite as a life-threatening envenomation until medical evaluation.",
+ s:["Move clear of snake; keep patient totally still and calm to retard venom dissemination.","Call 1122 immediately for transfer to hospital stocked with polyvalent antivenom.","Remove rings, shoes, and restrictive bands before extremity edema escalates.","Splint and immobilize bitten limb at heart level.","Record bite time and outline spreading swelling margin with a marker pen."],
+ d:["Do not cut, incise, or suction venom with mouth or extractor kits.","Do not apply arterial tourniquets or pack with ice.","Do not attempt to capture or kill snake."]},
+{n:"Scorpion, Spider & Insect Stings",cat:"bites",p:["skin","arm","hand","leg","foot","body"],c:"Difficulty breathing, facial swelling, systemic muscle cramping, child victim, or venomous scorpion sting.",
+ s:["Scrape bee stingers away horizontally using a stiff card or fingernail.","Cleanse sting site thoroughly with soap and water.","Apply cold ice pack wrapped in towel for 10–15 minutes to reduce localized pain.","Monitor closely for 30 minutes for symptoms of anaphylaxis."],
+ d:["Do not squeeze bee stinger with tweezers (injects remaining venom).","Do not apply unverified chemical pastes."]},
+{n:"Animal Bite (Dog, Cat, Mammal)",u:1,cat:"bites",p:["arm","hand","leg","skin"],c:"Always consult emergency physician. Urgent Rabies post-exposure prophylaxis and tetanus needed.",
+ s:["Immediately flush and irrigate bite wound with soap and running tap water for 15 minutes.","Apply direct pressure with sterile pad if actively bleeding.","Cover with clean sterile dressing.","Report to medical emergency department within hours for rabies immunoglobulin and antibiotic evaluation."],
+ d:["Do not suture or glue fresh mammal bite wounds at home.","Do not apply irritant oils or herbal rubs."]},
+{n:"Drowning & Water Submersion",u:1,cat:"critical",p:["body","chest"],c:"Always. Dial 1122.",
+ s:["Rescue without endangering yourself: throw rope or flotation device.","Once on dry ground, evaluate response and breathing.","If patient is not breathing, immediately start CPR with 5 initial rescue breaths followed by 30 compressions.","Cover victim with dry blankets to prevent immersion hypothermia."],
+ d:["Do not perform abdominal thrusts to 'drain' swallowed water.","Do not delay CPR to empty water from lungs."]},
+{n:"Medical Shock",u:1,cat:"critical",p:["body"],c:"Always. Pale clammy skin, rapid weak pulse, blue fingernails, altered mental status after trauma.",
+ s:["Call 1122. Treat visible triggers (such as stopping catastrophic external bleeding).","Lay victim flat and elevate legs 30 cm (unless spinal/pelvic injury suspected).","Cover with warm blanket to conserve body heat.","Loosen constricting garments and maintain airway."],
+ d:["Do not offer food, water, or oral analgesics.","Do not move patient unnecessarily."]},
+{n:"Febrile Convulsion / Fever in Child",cat:"critical",p:["body","head"],c:"Infant under 3 months with fever >38°C, seizure, stiff neck, petechial rash, or respiratory distress.",
+ s:["Remove heavy clothes and maintain room at comfortable cool temperature.","Hydrate child with small frequent fluids or breastmilk.","Gently sponge forehead and limbs with lukewarm water (never cold).","Administer pediatrician-recommended paracetamol based strictly on weight."],
+ d:["Do not use ice baths or alcohol sponge rubs.","Do not administer aspirin to pediatric patients."]},
+{n:"Vomiting & Dehydration",cat:"breathing",p:["abdomen"],c:"Inability to retain liquids > 12 hours, blood in emesis/stool, sunken eyes, zero urination for 8 hours.",
+ s:["Administer Oral Rehydration Salts (ORS) in tiny, frequent sips (5–10 ml every 5 minutes).","Continue regular breastfeeding for infants.","Rest digestive tract from heavy, greasy foods.","Maintain rigorous hand hygiene to prevent viral gastroenteritis spread."],
+ d:["Do not give OTC anti-diarrhea medications to children without medical order.","Do not withhold rehydration fluids."]},
+{n:"Knocked-Out Tooth (Dental Avulsion)",cat:"bleeding",p:["head"],c:"Accompanying jaw fracture, heavy intra-oral bleeding, or head trauma.",
+ s:["Handle tooth exclusively by the chewing crown; never touch the root fibers.","If soiled, rinse gently in cold milk or saline for 10 seconds.","Gently re-insert tooth into its socket if feasible and hold with clean gauze, or submerge in cold milk.","Reach a dental clinic within 60 minutes for viable replantation."],
+ d:["Do not scrub or scrape the tooth root.","Do not store the tooth dry or in plain water."]},
+{n:"Foreign Body in Ear or Splinter",cat:"bites",p:["head","skin","hand"],c:"Bleeding from ear canal, severe pain, or deep impaction.",
+ s:["Splinter: sterilize tweezers with alcohol, grasp splinter close to skin angle, pull straight out. Wash with soap.","Ear: tilt head to affected side to allow gravity drainage.","Seek medical extraction if foreign object remains lodged."],
+ d:["Do not probe into the ear canal with cotton buds, tweezers, or matches."]},
+{n:"Acute Panic & Hyperventilation",cat:"breathing",p:["chest","head"],c:"Chest pain that persists or radiates (requires ECG to rule out acute coronary syndrome).",
+ s:["Speak in a gentle, reassuring, grounding voice; guide patient to quiet environment.","Lead 4-7-8 pacing: inhale through nose for 4s, hold for 4s, exhale through mouth for 6s.","Have patient sit comfortably with hands resting on abdomen to foster diaphragmatic breathing."],
+ d:["Do not breathe into a paper bag (depletes arterial oxygen).","Do not dismiss symptoms abruptly."]},
+{n:"Road Traffic Accident Scene",u:1,cat:"critical",p:["body"],c:"Always. Dial 1122 with precise landmark/GPS coordinates.",
+ s:["Ensure scene safety: park with hazard flashers, turn off crashed ignitions, set warning triangle.","Call 1122 specifying vehicle count, patient headcount, and entrapped individuals.","Triage victims: immediately control catastrophic bleeding and preserve open airways.","Instruct ambulatory victims to stay off active highway lanes."],
+ d:["Do not extricate trapped victims unless vehicle fire or explosion is imminent.","Do not remove motorcycle helmets if cervical trauma is possible."]}
+];
+
+const $ = id => document.getElementById(id);
+let part = "all";
+let query = "";
+let category = "all";
+
+// Setup chips
+function chips() {
+  $("chips").innerHTML = Object.keys(LABELS).map(k =>
+    `<button class="chip ${k === part ? "on" : ""}" onclick="setPart('${k}')">${LABELS[k]}</button>`
+  ).join("");
+  document.querySelectorAll(".part").forEach(e => e.classList.toggle("on", e.dataset.p === part));
+}
+
+function setPart(p) {
+  part = (part === p ? "all" : p);
+  render();
+}
+
+function setCategoryFilter(cat, btn) {
+  category = cat;
+  document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  render();
+}
+
+function setQ(t) {
+  query = t;
+  $("q").value = t;
+  part = "all";
+  category = "all";
+  render();
+  setTimeout(() => {
+    document.getElementById("guides").scrollIntoView({ behavior: "smooth" });
+  }, 50);
+}
+
+function clearSearch() {
+  query = "";
+  $("q").value = "";
+  render();
+}
+
+// Render Guides
+function render() {
+  chips();
+  const q = query.trim().toLowerCase();
+  $("clearSearchBtn").style.display = q ? "block" : "none";
+
+  const filtered = D.filter(item => {
+    const matchPart = (part === "all" || item.p.includes(part));
+    const matchCat = (category === "all" || (category === "critical" && item.u) || item.cat === category);
+    const content = (item.n + " " + item.s.join(" ") + " " + item.c).toLowerCase();
+    const matchQuery = !q || content.includes(q);
+    return matchPart && matchCat && matchQuery;
+  });
+
+  $("count").innerHTML = `${filtered.length} first aid protocol${filtered.length === 1 ? "" : "s"}${part !== "all" ? " for <b>" + LABELS[part] + "</b>" : ""}`;
+  $("filterTag").innerHTML = part !== "all" ? `<span class="filter-tag">${LABELS[part]} <button onclick="setPart('${part}')">✕</button></span>` : "";
+
+  if (filtered.length === 0) {
+    $("list").innerHTML = `
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <p>No matching first aid protocols found.</p>
+        <button class="chip on" style="margin-top:12px" onclick="setPart('all'); clearSearch();">Reset Filters</button>
+      </div>`;
+    return;
+  }
+
+  $("list").innerHTML = filtered.map((x, i) => {
+    const tags = x.p.map(p => `<span>${LABELS[p] || p}</span>`).join("");
+    return `
+    <details class="card" ${filtered.length === 1 ? "open" : ""}>
+      <summary>
+        <div class="card-title-group">
+          <div class="card-name">${x.n}</div>
+          <div class="part-tags">${tags}</div>
+        </div>
+        ${x.u ? '<div class="urgent-badge">CALL 1122</div>' : ''}
+      </summary>
+      <div class="card-body">
+        <div class="card-toolbar">
+          <button class="speak-btn" onclick="speakSteps(this, '${escape(x.n)}', ${JSON.stringify(x.s).replace(/"/g, '&quot;')})">
+            🔊 Read Aloud
+          </button>
+        </div>
+        <div class="call-box">
+          <b>⚠️ Call 1122 immediately if:</b>
+          <span>${x.c}</span>
+        </div>
+        <div class="steps">
+          <div class="section-title">Action Steps</div>
+          <ol>
+            ${x.s.map(s => `<li>${s}</li>`).join("")}
+          </ol>
+        </div>
+        <div class="section-title">Critical Contraindications</div>
+        <div class="dont-box">
+          <h4>Do Not:</h4>
+          <ul>
+            ${x.d.map(d => `<li>${d}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+    </details>`;
+  }).join("");
+}
+
+// Interactive Audio-Visual CPR Metronome
+let cprAudioCtx = null;
+let cprInterval = null;
+let cprIsPlaying = false;
+
+function openCprMetronome() {
+  $("cprCard").classList.add("active");
+  $("cprCard").scrollIntoView({ behavior: "smooth" });
+}
+
+function closeCprMetronome() {
+  if (cprIsPlaying) toggleCprSound();
+  $("cprCard").classList.remove("active");
+}
+
+function playBeep() {
+  if (!cprAudioCtx) {
+    cprAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (cprAudioCtx.state === 'suspended') {
+    cprAudioCtx.resume();
+  }
+  const osc = cprAudioCtx.createOscillator();
+  const gain = cprAudioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(880, cprAudioCtx.currentTime); // 880Hz crisp beep
+  gain.gain.setValueAtTime(0.2, cprAudioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, cprAudioCtx.currentTime + 0.08);
+  osc.connect(gain);
+  gain.connect(cprAudioCtx.destination);
+  osc.start();
+  osc.stop(cprAudioCtx.currentTime + 0.09);
+
+  // Pulse circle visually
+  const heart = $("cprHeart");
+  heart.classList.add("beat");
+  setTimeout(() => heart.classList.remove("beat"), 120);
+}
+
+function toggleCprSound() {
+  cprIsPlaying = !cprIsPlaying;
+  const btn = $("cprToggleBtn");
+  if (cprIsPlaying) {
+    btn.textContent = "Pause Audio Beat";
+    btn.style.background = "#0F172A";
+    playBeep();
+    // 110 compressions per minute = 60000 / 110 ≈ 545.45 ms
+    cprInterval = setInterval(playBeep, 545);
+  } else {
+    btn.textContent = "Start Audio Beat";
+    btn.style.background = "var(--r-grad)";
+    clearInterval(cprInterval);
+  }
+}
+
+// Hands-free Audio Speech Synthesis
+let currentUtterance = null;
+function speakSteps(btn, titleEncoded, steps) {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll(".speak-btn").forEach(b => {
+      b.classList.remove("speaking");
+      b.innerHTML = "🔊 Read Aloud";
+    });
+    if (btn.dataset.active === "true") {
+      btn.dataset.active = "false";
+      return;
+    }
+  }
+
+  const title = unescape(titleEncoded);
+  const textToRead = `${title}. Steps to take: ${steps.map((s, idx) => `Step ${idx+1}: ${s}`).join('. ')}`;
+  const utter = new SpeechSynthesisUtterance(textToRead);
+  utter.rate = 0.95;
+  utter.pitch = 1.0;
+  
+  utter.onstart = () => {
+    btn.classList.add("speaking");
+    btn.dataset.active = "true";
+    btn.innerHTML = "⏹ Stop Audio";
+  };
+  utter.onend = () => {
+    btn.classList.remove("speaking");
+    btn.dataset.active = "false";
+    btn.innerHTML = "🔊 Read Aloud";
+  };
+  window.speechSynthesis.speak(utter);
+}
+
+// Emergency Geolocation Coordinate Modal
+function openLocationModal() {
+  $("locationModal").classList.add("open");
+  const display = $("gpsDisplay");
+  display.textContent = "Detecting current GPS coordinates...";
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const lat = pos.coords.latitude.toFixed(5);
+        const lng = pos.coords.longitude.toFixed(5);
+        const acc = Math.round(pos.coords.accuracy);
+        display.innerHTML = `
+          <div>LAT: <b>${lat}°</b></div>
+          <div>LNG: <b>${lng}°</b></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px">Accuracy: ±${acc}m · Ready to report to operator</div>
+        `;
+      },
+      (err) => {
+        display.innerHTML = `GPS coordinates unavailable (${err.message}).<br>Please state your nearest intersection or street landmark to 1122.`;
+      },
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
+  } else {
+    display.textContent = "Location services not supported on this browser. State physical landmarks to 1122.";
+  }
+}
+
+function closeLocationModal() {
+  $("locationModal").classList.remove("open");
+}
+
+function seekVideo(time) {
+  const vid = document.getElementById("trainingVideo");
+  if (vid) {
+    vid.currentTime = time;
+    vid.play().catch(() => {});
+  }
+}
+
+function setSpeed(rate) {
+  const vid = document.getElementById("trainingVideo");
+  if (vid) {
+    vid.playbackRate = rate;
+  }
+}
+
+// Event Listeners
+document.querySelectorAll(".part").forEach(e => e.addEventListener("click", () => setPart(e.dataset.p)));
+$("q").addEventListener("input", e => { query = e.target.value; render(); });
+
+// Add SVG Titles for Hover
+document.querySelectorAll(".part").forEach(e => {
+  const t = document.createElementNS("http://www.w3.org/2000/svg", "title");
+  t.textContent = LABELS[e.dataset.p] || e.dataset.p;
+  e.appendChild(t);
+});
+
+// Initial Render
+render();
+</script>
+</body>
+</html>
